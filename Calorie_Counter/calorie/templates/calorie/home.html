@@ -1,0 +1,30 @@
+{% extends 'calorie/base.html' %}
+
+{% block content %}
+
+<h1>Calorie Calculator</h1>
+
+<p>
+    Welcome to the Django Calorie Calculator.
+</p>
+
+<p>
+    Calculate your estimated daily calorie requirement
+    using your basic personal information.
+</p>
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'result' %}">
+    <button>Calculate Calories</button>
+</a>
+
+{% else %}
+
+<a href="{% url 'register' %}">
+    <button>Get Started</button>
+</a>
+
+{% endif %}
+
+{% endblock %}

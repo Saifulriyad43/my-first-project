@@ -1,0 +1,91 @@
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f6f9;
+    }
+
+    nav {
+        padding: 15px 20px;
+        background-color: #586d63;
+    }
+
+    nav a {
+        margin-right: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2 {
+        color: #198754;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 15px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #198754;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #146c43;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #e9f7ef;
+        border-radius: 8px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .link {
+        margin-top: 15px;
+    }
+</style>
+
+<nav>
+    {% if user.is_authenticated %}
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'result' %}">Calories</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>

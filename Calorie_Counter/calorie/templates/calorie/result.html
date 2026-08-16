@@ -1,0 +1,39 @@
+{% extends 'calorie/base.html' %}
+
+{% block content %}
+
+<h2>Calorie Result</h2>
+
+<p>
+    Hello, <strong>{{ profile.name }}</strong>!
+</p>
+
+<div class="result">
+
+    <h3>Your BMR</h3>
+
+    <p>
+        {{ bmr }} calories/day
+    </p>
+
+    <h3>Estimated Daily Calories</h3>
+
+    <p>
+        <strong>
+            {{ daily_calories }} calories/day
+        </strong>
+    </p>
+
+</div>
+
+<p>
+    BMR means Basal Metabolic Rate. It is the approximate
+    amount of energy your body needs at rest.
+</p>
+
+<p>
+    The daily calorie value is estimated using a sedentary
+    activity multiplier of 1.2.
+</p>
+
+{% endblock %}

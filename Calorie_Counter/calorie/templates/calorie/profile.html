@@ -1,0 +1,38 @@
+{% extends 'calorie/base.html' %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+<p>
+    <strong>Name:</strong>
+    {{ profile.name }}
+</p>
+
+<p>
+    <strong>Age:</strong>
+    {{ profile.age }}
+</p>
+
+<p>
+    <strong>Gender:</strong>
+    {{ profile.gender }}
+</p>
+
+<p>
+    <strong>Weight:</strong>
+    {{ profile.weight }} kg
+</p>
+
+<p>
+    <strong>Height:</strong>
+    {{ profile.height_cm }} cm
+</p>
+
+<a href="{% url 'result' %}">
+    <button>
+        View Calorie Result
+    </button>
+</a>
+
+{% endblock %}

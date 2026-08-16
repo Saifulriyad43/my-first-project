@@ -1,0 +1,280 @@
+
+{% extends 'calorie/base.html' %}
+
+{% block content %}
+
+<style>
+    .dashboard-header {
+        margin-bottom: 35px;
+    }
+
+    .dashboard-header h1 {
+        margin-bottom: 8px;
+    }
+
+    .dashboard-header p {
+        margin-bottom: 0;
+    }
+
+
+    /* User information */
+
+    .info-card {
+        background: #fafaf8;
+        border: 1px solid #ebe8e2;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    .info-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+
+    .info-item {
+        background: white;
+        border: 1px solid #eeeae4;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+
+    .info-label {
+        display: block;
+        color: #858b87;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+
+    .info-value {
+        color: #29332f;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+
+    /* Calorie cards */
+
+    .calorie-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+
+    .calorie-card {
+        padding: 25px;
+        border-radius: 15px;
+        background: #1f6f5b;
+        color: white;
+    }
+
+
+    .calorie-card.light {
+        background: #f1f7f4;
+        border: 1px solid #dcebe5;
+        color: #1f3d35;
+    }
+
+
+    .calorie-card span {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+
+    .calorie-card h2 {
+        color: inherit;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 27px;
+        margin: 10px 0 4px;
+    }
+
+
+    .calorie-card p {
+        color: inherit;
+        opacity: 0.75;
+        font-size: 12px;
+        margin: 0;
+    }
+
+
+    .dashboard-button {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+
+    @media (max-width: 600px) {
+
+        .info-grid,
+        .calorie-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+</style>
+
+
+<!-- Header -->
+
+<div class="dashboard-header">
+
+    <h1>
+        Welcome, {{ profile.name }}
+    </h1>
+
+    <p>
+        Here's a quick overview of your health information.
+    </p>
+
+</div>
+
+
+<!-- Personal Information -->
+
+<div class="info-card">
+
+    <h3>Personal Information</h3>
+
+    <div class="info-grid">
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Name
+            </span>
+
+            <span class="info-value">
+                {{ profile.name }}
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Age
+            </span>
+
+            <span class="info-value">
+                {{ profile.age }} years
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Gender
+            </span>
+
+            <span class="info-value">
+                {{ profile.gender }}
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Weight
+            </span>
+
+            <span class="info-value">
+                {{ profile.weight }} kg
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Height
+            </span>
+
+            <span class="info-value">
+                {{ profile.height_cm }} cm
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Calorie Information -->
+
+<div class="calorie-grid">
+
+
+    <div class="calorie-card light">
+
+        <span>
+            BASAL METABOLIC RATE
+        </span>
+
+        <h2>
+            {{ profile.bmr }}
+        </h2>
+
+        <p>
+            calories / day
+        </p>
+
+    </div>
+
+
+    <div class="calorie-card">
+
+        <span>
+            DAILY CALORIE ESTIMATE
+        </span>
+
+        <h2>
+            {{ profile.daily_calories }}
+        </h2>
+
+        <p>
+            calories / day
+        </p>
+
+    </div>
+
+
+</div>
+
+
+<!-- Button -->
+
+<div class="dashboard-button">
+
+    <a href="{% url 'result' %}">
+
+        <button>
+            View Full Result
+        </button>
+
+    </a>
+
+</div>
+
+
+{% endblock %}
